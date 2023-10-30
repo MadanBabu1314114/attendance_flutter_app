@@ -53,7 +53,6 @@ Future<List<Student>> retrieveStudentFromYearBranchSection(
   final studentList = studentData1.snapshot.value as Map;
   final List<Student> students = [];
   studentList.forEach((key, value) {
-    
     if (value['branch_id'].toString() == branch) {
       if (value['year'].toString() == year) {
         students.add(
@@ -109,3 +108,5 @@ void uploadAttendanceForStudent(
     });
   }
 }
+
+ 

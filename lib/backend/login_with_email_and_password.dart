@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final googleSignIn = GoogleSignIn();
 FirebaseAuth firebaseAuth = FirebaseAuth.instance;
- 
 
 Future<bool> login_email_password(
   BuildContext context,
@@ -22,6 +21,8 @@ Future<bool> login_email_password(
     if (e.code == 'user-not-found') {
       snackBarUser(context, 'No user found for that email.');
     } else if (e.code == 'wrong-password') {
+      print(emailAddress);
+      print(password);
       snackBarUser(context, 'Wrong password provided for that user.');
     } else {
       snackBarUser(context, e.toString());

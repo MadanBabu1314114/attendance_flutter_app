@@ -1,7 +1,9 @@
 import 'package:attendance2/data/data.dart';
 import 'package:attendance2/firebase/admin%20backend/admin_add_branch_backend.dart';
 import 'package:attendance2/screen/adminScreens/adminNavigationScreens/add_branches.dart';
+import 'package:attendance2/screen/adminScreens/admin_add_branch_and_faculty.dart';
 import 'package:attendance2/screen/adminScreens/admin_add_faculty.dart';
+import 'package:attendance2/screen/adminScreens/admin_faculty_list_view.dart';
 import 'package:attendance2/widget/branch_card.dart';
 import 'package:flutter/material.dart';
 
@@ -42,15 +44,15 @@ class _AdminAddBranchState extends State<AdminAddBranch>
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      animationDuration: Duration(milliseconds: 400),
+      animationDuration: const Duration(milliseconds: 400),
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          leading: Icon(Icons.add_business_sharp),
+          leading: const Icon(Icons.add_business_sharp),
           title: const Text("Add Branch"),
           bottom: const TabBar(
-              tabs: [Text("Current Branches"), Text("Add Faculty")]),
+              tabs: [Text("Current Branches"), Text("View Faculty")]),
           actions: [
             TextButton(
                 onPressed: () {
@@ -65,11 +67,11 @@ class _AdminAddBranchState extends State<AdminAddBranch>
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (ctx) => AddBranches(),
+                    builder: (ctx) => const AdminAddBranchAndFaculty(),
                   ),
                 );
               },
-              child: Icon(
+              child: const Icon(
                 Icons.add,
                 size: 30,
               ),
@@ -102,7 +104,7 @@ class _AdminAddBranchState extends State<AdminAddBranch>
                 }
               },
             ),
-            AdminAddFaculty()
+             const AdminFacultyLstView()
           ],
         ),
       ),

@@ -79,6 +79,7 @@ class _FacultyTakeAttendanceState extends State<FacultyTakeAttendance> {
 
   @override
   void initState() {
+    listOfSubject.sort();
     takeListOfYears();
     takeListOfBranch();
     takeListOfSection();

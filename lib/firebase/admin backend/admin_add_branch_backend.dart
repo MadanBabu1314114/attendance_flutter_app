@@ -47,3 +47,41 @@ Future<List<Branch>> retrieveBranches() async {
 
   return branches;
 }
+
+
+void addFacultyIntoTheFirebase(String username, String email) async {
+  final facultyDatabase = database.child("faculty/$username-email");
+  await facultyDatabase.set({'username': username, 'email': email});
+}
+
+
+
+Stream<List<Faculty>> retrieveFacultyFromFirebase() {
+  final reference =  database.child('faculty');
+
+  return reference.onValue.map((event) {
+    if (event.snapshot.value != null) {
+      final Map<dynamic, dynamic> facultyData = event.snapshot.value as Map;
+      List<Faculty> facultyList = [];
+
+      facultyData.forEach((key, value) {
+        final faculty = Faculty(
+          email: value['email'],
+          username: value['username'],
+        );
+        facultyList.add(faculty);
+      });
+
+      return facultyList;
+    } else {
+      return [];
+    }
+  });
+}
+
+class Faculty {
+  final String email;
+  final String username;
+
+  Faculty({required this.email, required this.username});
+}

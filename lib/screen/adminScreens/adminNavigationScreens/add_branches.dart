@@ -34,8 +34,6 @@ class AddBranches extends StatefulWidget {
 }
 
 class _AddBranchesState extends State<AddBranches> {
-   
-
   String _filePath = '';
   FilePickerResult? resultPicker;
   List<dynamic>? listOfStudents;
@@ -125,111 +123,99 @@ class _AddBranchesState extends State<AddBranches> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text("Attendance"),
-          elevation: 0,
-          actions: [
-            TextButton(
-              onPressed: () {
-                database.remove();
-              },
-              child: const Text("Clear database"),
-            )
-          ],
-        ),
-        body: Container(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SizedBox(height: 20),
-                    Card(
-                      surfaceTintColor: Colors.white,
-                      child: Column(
-                        children: [
-                          Card(
-                            color: CardColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: SizedBox(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Colors.white,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 20),
+                Card(
+                  surfaceTintColor: Colors.white,
+                  child: Column(
+                    children: [
+                      Card(
+                        color: CardColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Row(
                                   children: [
-                                    Row(
+                                    Text(
+                                      "Note:",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .copyWith(color: Colors.red),
+                                    ),
+                                    const SizedBox(
+                                      width: 4,
+                                    ),
+                                    const Column(
                                       children: [
                                         Text(
-                                          "Note:",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall!
-                                              .copyWith(color: Colors.red),
-                                        ),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        const Column(
-                                          children: [
-                                            Text(
-                                              "Excel sheet must be in the below formate",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                              softWrap: true,
-                                              overflow: TextOverflow.visible,
-                                            )
-                                          ],
+                                          "Excel sheet must be in the below formate",
+                                          style: TextStyle(color: Colors.white),
+                                          softWrap: true,
+                                          overflow: TextOverflow.visible,
                                         )
                                       ],
-                                    ),
-                                    Text(
-                                      "Roll Number | Names | Section | Branch | Year | Phone Number1 | Phone Number2",
-                                      style: TextStyle(color: Colors.white),
                                     )
                                   ],
                                 ),
-                              ),
+                                Text(
+                                  "Roll Number | Names | Section | Branch | Year | Phone Number1 | Phone Number2",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              pickFile();
-                            },
-                            child: _filePath.isEmpty
-                                ? const Text("Add AddBranches file")
-                                : Text(resultPicker!.names.first.toString()),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        enterDataIntoFirebase();
-                      },
-                      icon: const Icon(Icons.arrow_downward),
-                      label: const Text("Enter"),
-                      style: ElevatedButton.styleFrom(
-                        textStyle:
-                            const TextStyle(fontSize: 16, color: Colors.white),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
+                      const SizedBox(
+                        height: 40,
                       ),
-                    ),
-                  ],
+                      TextButton(
+                        onPressed: () {
+                          pickFile();
+                        },
+                        child: _filePath.isEmpty
+                            ? const Text("Add AddBranches file")
+                            : Text(resultPicker!.names.first.toString()),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              if (isUploading) CircularProgressIndicator()
-            ],
+                ElevatedButton.icon(
+                  onPressed: () {
+                    enterDataIntoFirebase();
+                  },
+                  icon: const Icon(Icons.arrow_downward),
+                  label: const Text("Enter"),
+                  style: ElevatedButton.styleFrom(
+                    textStyle:
+                        const TextStyle(fontSize: 16, color: Colors.white),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ));
+          if (isUploading) CircularProgressIndicator()
+        ],
+      ),
+    );
   }
 }

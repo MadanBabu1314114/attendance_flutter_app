@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   var isTeacher = false;
+  var isSee = false;
 
   @override
   void dispose() {
@@ -183,13 +184,34 @@ class _LoginScreenState extends State<LoginScreen> {
                               const SizedBox(height: 10.0),
                               TextField(
                                 controller: passwordController,
-                                obscureText: true,
+                                obscureText: !isSee,
                                 decoration: InputDecoration(
                                   filled: true,
-                                  prefixIcon: Icon(
-                                    Icons.lock,
-                                    color: Colors.black.withOpacity(0.8),
-                                  ),
+                                  prefixIcon: !isSee
+                                      ? GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              isSee = !isSee;
+                                            });
+                                          },
+                                          child: Icon(
+                                            Icons.remove_red_eye,
+                                            color:
+                                                Colors.black.withOpacity(0.8),
+                                          ),
+                                        )
+                                      : GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              isSee = !isSee;
+                                            });
+                                          },
+                                          child: Icon(
+                                            Icons.remove_red_eye_outlined,
+                                            color:
+                                                Colors.black.withOpacity(0.8),
+                                          ),
+                                        ),
                                   fillColor:
                                       const Color.fromARGB(255, 151, 165, 243)
                                           .withOpacity(0.6),
@@ -229,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         Navigator.of(context).pushReplacement(
                                             MaterialPageRoute(
                                                 builder: (ctx) =>
-                                                   const  FacultyNavigationScreen()));
+                                                    const FacultyNavigationScreen()));
                                       } else {
                                         Navigator.of(context).pushReplacement(
                                             MaterialPageRoute(

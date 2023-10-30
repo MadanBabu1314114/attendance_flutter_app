@@ -1,4 +1,5 @@
 import 'package:attendance2/backend/register_with_email_and_password.dart';
+import 'package:attendance2/firebase/admin%20backend/admin_add_branch_backend.dart';
 import 'package:attendance2/screen/loginAndRegisterScreen/login_for_student_teacher.dart';
 import 'package:attendance2/widget/snackbar_custom.dart';
 import 'package:flutter/material.dart';
@@ -156,6 +157,8 @@ class _AdminAddFacultyState extends State<AdminAddFaculty> {
                       final result = await register_email_password(context,
                           emailController.text, passwordController.text);
                       if (result) {
+                        addFacultyIntoTheFirebase(
+                            nameContrller.text, emailController.text);
                         snackBarUser(context, "Sucessfull");
                       }
                     },
