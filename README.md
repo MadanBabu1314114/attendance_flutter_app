@@ -14,12 +14,24 @@ A simple Flutter app for managing attendance records. This app allows users to t
 
 - Flutter
 - Firebase Authentication
-- Firebase Firestore
+- Firebase RealTime Database
 
 ## Installation
 
 1. Clone the repository:
 
    ```sh
+   git@github.com:MadanBabu1314114/attendance_flutter_app.git
+
+2. Navigate to the project folder:
+   cd attendance-app-flutter
+
+3.Install dependencies:
+  flutter pub get
+
+4.Run the app:
+  flutter run
+
+
     
 
