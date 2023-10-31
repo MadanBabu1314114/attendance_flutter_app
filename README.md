@@ -24,9 +24,11 @@ A simple Flutter app for managing attendance records. This app allows users to t
    git@github.com:MadanBabu1314114/attendance_flutter_app.git
 
 2. Navigate to the project folder:
+   ```sh
    cd attendance-app-flutter
 
 3.Install dependencies:
+  ```sh
   flutter pub get
 
 4.Run the app:
