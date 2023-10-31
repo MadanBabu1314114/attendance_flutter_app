@@ -26,14 +26,8 @@ A simple Flutter app for managing attendance records. This app allows users to t
 2. Navigate to the project folder:
    ```sh
    cd attendance-app-flutter
-
-3.Install dependencies:
+   
+3.Install dependencies & run :
   ```sh
-  flutter pub get
-
-4.Run the app:
-  flutter run
-
-
-    
-
+   flutter pub get
+   flutter run
